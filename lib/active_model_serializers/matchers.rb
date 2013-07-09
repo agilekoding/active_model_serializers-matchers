@@ -132,14 +132,15 @@ module ActiveModel
         def matches?(actual)
           @actual = actual
 
-          matched_association = associations.select do |assc|
-            assc.name == name
-          end.first
+          matched_association = associations.detect do |k, assc|
+            k == name
+          end
 
           return false unless matched_association
 
           if key
-            return false if matched_association.key != key
+            association_key = matched_association.last.options[:key]
+            return false if association_key != key
           end
 
           true
