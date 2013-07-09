@@ -54,15 +54,15 @@ module ActiveModel
         end
 
         def description
-          "embed #{name}"
+          "embed #{expected}"
         end
 
         def failure_message_for_should
-          %Q{expected "#{actual._embed}" to be "#{name}", but it wasn't}
+          %Q{expected "#{actual._embed}" to be "#{expected}", but it wasn't}
         end
 
         def failure_message_for_should_not
-          %Q{expected "#{actual._embed}" to be "#{name}", but it was}
+          %Q{expected "#{actual._embed}" to be "#{expected}", but it was}
         end
 
         private
